@@ -1,4 +1,4 @@
-FROM ber4tbey/whatsowen:latest
+FROM cyberuserbot/whatscyber:latest
 
 RUN git clone https://github.com/FaridDadashzade/WhatsCyber /root/WhatsCyber
 WORKDIR /root/WhatsCyber/

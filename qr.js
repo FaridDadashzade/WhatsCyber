@@ -21,7 +21,7 @@ async function whatsCyber () {
 
     conn.on('connecting', async () => {
         console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Cyber')}
-${chalk.white.italic('WhatsCyber Kodu Alıcı')}
+${chalk.white.italic('WhatsCyber QR Kodu Alıcı')}
 ${chalk.blue.italic('ℹ️  Connecting to Whatsapp... Please Wait.')}`);
     });
     conn.on('open', async () => {

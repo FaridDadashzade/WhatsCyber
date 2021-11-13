@@ -1,0 +1,40 @@
+{
+  "name": "WhatsCyber",
+  "version": "1.0",
+  "description": "WhatsCyber project - a Whatsapp userbot helping to improve your Whatsapp experience.",
+  "main": "./WhatsCyber/bot.js",
+  "scripts": {
+    "start": "supervisor -s bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaridDadashzade/WhatsCyber.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "ai",
+    "cyber",
+    "api",
+    "unlimited",
+    "cyberdev",
+    "machine learning",
+    "automatic",
+    "whatsapp web",
+    "whatsapp api",
+    "whatscyber"
+  ],
+  "author": "FaridDadashzade",
+  "developer": "CyberDev",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://github.com/FaridDadashzade/WhatsCyber#readme",
+  "dependencies": {
+    "whatscyber-npm": "git+https://github.com/FaridDadashzade/whatscyber-npm.git",
+    "@adiwajshing/baileys": "^3.5.2",
+    "chalk": "^4.1.2",
+    "translatte": "3.0.1"
+  }
+}

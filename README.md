@@ -11,6 +11,7 @@
 </p>
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/cyberuserbot/whatscyber?style=flat-square)
+
 ----
 
 
@@ -40,13 +41,13 @@ By installing Cyber, you accept these responsibilities.
 ```
 
 ### Developers
-[![FaridDadashzade](https://github.com/FaridDadashzade.png?size=100)](https://github.com/erdewbey)
+[![FaridDadashzade](https://github.com/FaridDadashzade.png?size=100)](https://github.com/FaridDadashzade)
 
 
 ## License
 `GNU General Public Licence v3.0`.
 
-## Thanks 
+## Credits:
 
 [YusufUsta](https://github.com/YusufUsta)
 

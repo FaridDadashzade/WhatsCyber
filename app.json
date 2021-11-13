@@ -9,17 +9,17 @@
     "stack": "container",
     "env": {
         "CYBER_SESSION": {
-            "description": "Qr.Js ile oluşturduğunuz özel session kodu. Type here yours WhatsCyber Session.",
+            "description": "Qr.Js ile yaratdığınız session kodu. Type here yours WhatsCyber Session.",
             "required": true
         },
         "SUDO": {
-            "description": "Kullanıcılara tüm yetkileri verir. It gives all the privileges to the users. => 90xxx,0,90xxx,0,90xxx...",
+            "description": "İstifadəçilərə bütün yetkiləri verir. It gives all the privileges to the users. => 90xxx,0,90xxx,0,90xxx...",
             "required": false
         },
         "LANGUAGE": {
-            "description": "Bot language. Azerice => az, English => en, Türkçe => tr, Malayalam => ml, Hindi => HI, Indonesia => ID, Español => ES, Portuguese => pt, Russian => ru",
+            "description": "Bot language. Azərbaycanca => az, English => en, Türkçe => tr, Malayalam => ml, Hindi => HI, Indonesia => ID, Español => ES, Portuguese => pt, Russian => ru",
             "required": true,
-            "value": "TR"
+            "value": "AZ"
         },
         "PROXY": {
             "description": "Proxy Adresi. Proxy Address => http://some-host:1234",

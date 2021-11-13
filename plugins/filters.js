@@ -1,4 +1,10 @@
-
+/*# Copyright (C) 2021 The CyberSpaceAZ Company LLC.
+#
+# Licensed under the CyberSpaceAZ Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+# Thanks github.com/spechide for creating inline bot support.
+# WhatsCyber - FaridDadashzade*/
 
 const Cyber = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
@@ -10,7 +16,7 @@ const Lang = Language.getString('filters');
 var f_rep = ''
 if (Config.LANG == 'TR') f_rep = '*Filtre Ayarlandı ✅*'
 if (Config.LANG == 'EN') f_rep = '*Filter Setted ✅*'
-if (Config.LANG == 'AZ') f_rep = '*Filtr Düzəldildi ✅*'
+if (Config.LANG == 'AZ') f_rep = '*Filter ayarlandı ✅*'
 if (Config.LANG == 'ES') f_rep = '*Filtro Ajustado ✅*'
 if (Config.LANG == 'HI') f_rep = '*फ़िल्टर सेट ✅*'
 if (Config.LANG == 'RU') f_rep = '*Фильтр настроен ✅*'

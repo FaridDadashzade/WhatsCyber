@@ -1,3 +1,12 @@
+/*# Copyright (C) 2021 The CyberSpaceAZ Company LLC.
+#
+# Licensed under the CyberSpaceAZ Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+# Thanks github.com/spechide for creating inline bot support.
+# WhatsCyber - FaridDadashzade*/
+
+
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 if (fs.existsSync('config.env')) require('dotenv').config({ path: './config.env' });
@@ -12,7 +21,7 @@ DEBUG = process.env.DEBUG === undefined ? false : convertToBool(process.env.DEBU
 
 module.exports = {
     VERSION: 'v1.0',
-    CHANNEL: 'https://t.me/whatscyberplugin',
+    CHANNEL: 'https://t.me/WhatsCyberPlugin',
     SESSION: process.env.CYBER_SESSION === undefined ? '' : process.env.CYBER_SESSION,
     ANTILINK: process.env.ANTI_LINK === undefined ? 'false' : process.env.ANTI_LINK,
     ANTILINKMSG: process.env.ANTILINK_MESSAGE === undefined ? 'default' : process.env.ANTILINK_MESSAGE,

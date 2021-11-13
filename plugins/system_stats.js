@@ -1,4 +1,10 @@
-
+/*# Copyright (C) 2021 The CyberSpaceAZ Company LLC.
+#
+# Licensed under the CyberSpaceAZ Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+# Thanks github.com/spechide for creating inline bot support.
+# WhatsCyber - FaridDadashzade*/
 
 const Cyber = require('../events');
 const {MessageType, Mimetype, MessageOptions} = require('@adiwajshing/baileys');
@@ -16,7 +22,7 @@ if (Config.WORKTYPE == 'private') {
     Cyber.addCommand({pattern: 'alive', fromMe: true, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
         if (Config.ALIVEMSG == 'default') {
-            await message.client.sendMessage(message.jid,'```Tanrı Türk\'ü Korusun. 🐺 Cyber Hizmetinde!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/TheCyberSupport\n*Telegram Channel:* https://t.me/whatscyber\n*Plugin Channel:* ' + Config.CHANNEL , MessageType.text);
+            await message.client.sendMessage(message.jid,'```WhatsCyber aktivdir!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/TheCyberSupport\n*Telegram Channel:* https://t.me/whatscyber\n*Plugin Channel:* ' + Config.CHANNEL , MessageType.text);
         }
         else {
             var payload = Config.ALIVEMSG
@@ -49,7 +55,7 @@ else if (Config.WORKTYPE == 'public') {
     Cyber.addCommand({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
         if (Config.ALIVEMSG == 'default') {
-            await message.client.sendMessage(message.jid,'```Tanrı Türk\'ü Korusun. 🐺 Cyber Hizmetinde!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/TheCyberSupport\n*Telegram Channel:* https://t.me/WhatsCyber\n*Plugin Channel:* ' + Config.CHANNEL , MessageType.text);
+            await message.client.sendMessage(message.jid,'```WhatsCyber aktivdir!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/TheCyberSupport\n*Telegram Channel:* https://t.me/WhatsCyber\n*Plugin Channel:* ' + Config.CHANNEL , MessageType.text);
         }
         else {
             var payload = Config.ALIVEMSG

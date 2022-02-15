@@ -1,6 +1,6 @@
 {
     "__CYBERJSON__": true,
-    "LANGUAGE": "Türkcə",
+    "LANGUAGE": "Azərbaycanca",
     "LANGCODE": "Tr",
     "AUTHOR": "CyberDev",
     "STRINGS": {
@@ -15,17 +15,17 @@
             "INSTALL_DESC": "Plugin quraşdırır.",
             "NEED_URL": "Zəhmət olmasa bir URL daxil edin! Nümunə:",
             "INVALID_URL": "```Xahiş edirəm etibarlı bir URL daxil edin!```",
-            "INVALID_PLUGIN": "*❌ Plagininiz səhvdir!*\n*Xeta:*",
+            "INVALID_PLUGIN": "*❌ Plagininiz səhvdir!*\n*Xəta:*",
             "INSTALLED": "*✅ Plugin uğurla quraşdırıldı!*",
-            "PLUGIN_DESC": "Qurduğunuz plaginləri göstərir.",
-            "INSTALLED_FROM_REMOTE": "*Xaricdən qurduğunuz plaginlər:*\n",
-            "NO_PLUGIN": "*Xarici plaginlər quraşdırmamışsınız!*",
-            "REMOVE_DESC": "Plugin çıxarır.",
+            "PLUGIN_DESC": "Qurduğunuz pluginləri göstərir.",
+            "INSTALLED_FROM_REMOTE": "*Xaricdən qurduğunuz pluginlər:*\n",
+            "NO_PLUGIN": "*Xarici pluginlər quraşdırmamışsınız!*",
+            "REMOVE_DESC": "Plugini silir.",
             "UNOFF": "⚠️ *Diqqət!* \n*Qurduğunuz plagin rəsmi deyil!*",
             "NEED_PLUGIN": "```Zəhmət olmasa bir Plugin daxil edin! Nümunə: .plugin __test```",
             "NOT_FOUND_PLUGIN": "```Bəlkə belə bir plagin quraşdırmısınız, ya da yox. Ancaq əmin deyil ki, indi deyil.```",
             "DELETED": "*✅ Modul uğurla silindi!*",
-            "WARN": "Plaginləri yalnız t.me/remasterplugin kanalından əldə edin."
+            "WARN": "Plaginləri yalnız t.me/whatscyberplugin kanalından əldə edin."
         },
         "admin": {
             "BAN_DESC": "Grupdan şəxsi banlayır. Cavap verin (reply) yada əmrin yanına şəxs adı yazın",
@@ -157,15 +157,15 @@
             "DISABLED": "```Lydia bu istifadəçi üçün deaktiv edilmişdir!```"
         },
         "memes": {
-            "MEMES_DESC": "Yanıt verdiğiniz fotoğrafa yazdığınız yazıyı ekler.",
-            "NEED_REPLY": "*Bir fotoğraf veya videoya yanıt verin!*",
-            "DOWNLOADING": "```Medya indiriliyor & meme yapılıyor...```"
+            "MEMES_DESC": "Cavab verdiyiniz şəkilə yazdığınız yazıyı əlavə edər.",
+            "NEED_REPLY": "*Bir şəkil və ya videoya cavab verin!*",
+            "DOWNLOADING": "```Media yüklənilir...```"
         },
         "removebg": {
             "REMOVEBG_DESC": "Şəklin arxa-planını silər.",
             "NEED_PHOTO": "*Mənə bir şəkil ver!*",
-            "NO_API_KEY": "*API Key'iniz yoxdur!*\nremove.bg adresindən alabilərsiniz.",
-            "RBGING": "```Arxaplan silinir...``"
+            "NO_API_KEY": "*API Key'iniz yoxdur!*\nremove.bg adresindən ala bilərsiniz.",
+            "RBGING": "```Arxa plan silinir...``"
         },
         "scrapers": {
             "TRANSLATE_DESC": "Google tərcümə ilə tərcümə edər. Bir mesaja cavab verməyiniz lazımdır.",
@@ -181,12 +181,12 @@
             "TTS_DESC": "Yazıyı səsə çevirər.",
             "TTS_ERROR": "```Xəta, cümlənizin nitq sintezi prosesdən keçmədi!```",
             "SONG_DESC": "Yazdığınız musiqini yükləyər.",
-            "NEED_TEXT_SONG": "*Xaiş bir mahnı yazın!*\n*Nümunə:* ```.song flört - rasta baba```",
+            "NEED_TEXT_SONG": "*Xaiş edirəm bir mahnı adı yazın!*\n*Nümunə:* ```.song flört - rasta baba```",
             "NO_RESULT": "*Heçbir şey tapabilmədim :(*",
             "DOWNLOADING_SONG": "```Mahnınız yüklənilir...```",
             "UPLOADING_SONG": "```Mahnınız yüklənilir...```",
             "VIDEO_DESC": "YouTube'dan Video yükləyər.",
-            "NEED_VIDEO": "*Xaiş bir Video adresi yazın!*\n*Nümunə:* ``.video https://www.youtube.com/watch?v=nAFlVm5qeBc```",
+            "NEED_VIDEO": "*Xaiş edirəm bir Video adresi yazın!*\n*Nümunə:* ``.video https://www.youtube.com/watch?v=nAFlVm5qeBc```",
             "DOWNLOADING_VIDEO": "```Videonuz yüklənilir...```",
             "UPLOADING_VIDEO": "```Videonuz yüklənilir...```",
             "YT_DESC": "YouTube'dan axtarış edər.",
@@ -196,7 +196,7 @@
             "SEARCHING": "*🔎 İstintaq...*",
             "WIKI_DESC": "Vikipediyada axtarış aparır.",
             "IMG_DESC": "Google resimler fotoğraf çeker.",
-            "IMG": "```{}``` adet ```{}``` fotoğrafı yükleniyor..."
+            "IMG": "```{}``` ədəd ```{}``` şəkil yüklənir..."
         },
         "sticker": {
             "STICKER_DESC": "Cavap verdiyiniz şəkili vəya videoyu Sticker çevirin.",

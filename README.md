@@ -36,8 +36,8 @@ npm i
 ```
 Your WhatsApp account may be banned.
 This is an open source project, you are responsible for everything you do.
-Absolutely Cyber administrators do not accept responsibility.
-By installing Cyber, you accept these responsibilities.
+Absolutely WhatsCyber administrators do not accept responsibility.
+By installing WhatsCyber, you accept these responsibilities.
 ```
 
 ### Developers

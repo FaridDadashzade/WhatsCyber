@@ -6,7 +6,6 @@
 # Thanks github.com/spechide for creating inline bot support.
 # WhatsCyber - FaridDadashzade*/
 
-
 const fs = require("fs");
 const os = require("os");
 const path = require("path");

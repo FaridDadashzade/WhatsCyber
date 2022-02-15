@@ -10,7 +10,7 @@
     <br>
 </p>
 
-![Docker Pulls](https://img.shields.io/docker/pulls/cyberuserbot/whatscyber?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/cyberuserbot/whatscyber?style=flat-square) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cyberuserbot/whatscyber?style=flat-square)
 
 ----
 

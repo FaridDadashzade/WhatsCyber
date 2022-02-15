@@ -20,7 +20,7 @@
 
 ### Easy Method
 
-[![Run on Repl.it](https://repl.it/badge/github/FaridDadashzade/WhatsCyber)](https://replit.com/@FaridDadashzade/cybersession)
+[![Run on Repl.it](https://repl.it/badge/github/FaridDadashzade/WhatsCyber)](https://replit.com/@FaridDadashzade/cybersession?lite=True)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/FaridDadashzade/WhatsCyber)
 

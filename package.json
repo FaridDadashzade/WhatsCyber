@@ -32,9 +32,6 @@
   },
   "homepage": "https://github.com/FaridDadashzade/WhatsCyber#readme",
   "dependencies": {
-    "whatscyber-npm": "git+https://github.com/FaridDadashzade/whatscyber-npm.git",
-    "@adiwajshing/baileys": "^3.5.2",
-    "chalk": "^4.1.2",
-    "translatte": "3.0.1"
+    "whatscyber-npm": "git+https://github.com/FaridDadashzade/whatscyber-npm.git"
   }
 }
